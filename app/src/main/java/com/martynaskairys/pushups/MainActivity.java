@@ -6,12 +6,14 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Date;
 import java.text.SimpleDateFormat;
@@ -25,12 +27,33 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
     Button btnView;
     SQLiteDatabase db;
 
+    TextView mTextField;
+
+
     int score = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mTextField = (TextView) findViewById(R.id.mTextField);
+
+        new CountDownTimer(30000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                mTextField.setText("" + millisUntilFinished / 1000);
+            }
+
+            public void onFinish() {
+
+                Toast.makeText(MainActivity.this, "Congrats "+score, Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(MainActivity.this, StartActivity.class);
+                startActivity(intent);
+            }
+        }.start();
+
 
         btnFinish = (Button) findViewById(R.id.buttonFinish);
         textView = (TextView) findViewById(R.id.textView);
@@ -42,9 +65,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         db = openOrCreateDatabase("PushupsDB", Context.MODE_PRIVATE, null);
         db.execSQL("CREATE TABLE IF NOT EXISTS pushups(pushupsno VARCHAR, date VARCHAR);");
 
-
     }
-
 
 
     String currentDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault()).format(new Date());
@@ -68,6 +89,18 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                 showMessage("Error", "Please enter all values");
                 return;
             }
+
+
+            new CountDownTimer(30000, 1000) {
+
+                public void onTick(long millisUntilFinished) {
+                    mTextField.setText("" + millisUntilFinished / 1000);
+                }
+
+                public void onFinish() {
+                    mTextField.setText("done!");
+                }
+            }.start();
 
             // Inserting record
 

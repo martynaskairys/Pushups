@@ -26,15 +26,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="0dp"
         android:text="0"
         android:textSize="64sp"
         android:gravity="center_horizontal"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHorizontal_bias="0.312"
+        app:layout_constraintTop_toBottomOf="@+id/mTextField" />
 
     <Button
         android:id="@+id/buttonFinish"
@@ -43,7 +44,7 @@
         android:layout_marginLeft="8dp"
         android:onClick="onClick"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="48dp"
         android:text="finish"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -63,6 +64,18 @@
         app:layout_constraintLeft_toRightOf="@+id/buttonFinish"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButton" />
+
+    <TextView
+        android:id="@+id/mTextField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="32dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>

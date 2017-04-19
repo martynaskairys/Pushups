@@ -26,4 +26,16 @@ Intent intent = new Intent(StartActivity.this, Results.class);
 
     }
 
+    public void startTimerBattle(View view){
+
+        Intent intent = new Intent(StartActivity.this, TimerBattle.class);
+        startActivity(intent);
+    }
+
+    public void openProfileActivity(View view){
+
+        Intent intent = new Intent(StartActivity.this, Profile.class);
+        startActivity(intent);
+    }
+
 }
